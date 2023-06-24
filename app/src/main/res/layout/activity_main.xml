@@ -18,4 +18,36 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/Logo" />
 
+    <Button
+        android:id="@+id/buttonAutorization"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/start_activity_buttons_border"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/autorization"
+        android:textColorHighlight="#FFFFFF"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#F1F1F1"
+        app:strokeColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonCreateAccount"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/create_account"
+        android:textColor="@color/black"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAutorization"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAutorization"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonAutorization"
+        app:rippleColor="#FFFFFF" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
