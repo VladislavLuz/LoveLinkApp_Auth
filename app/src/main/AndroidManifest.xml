@@ -13,7 +13,7 @@
         android:theme="@style/Theme.LoveLink"
         tools:targetApi="33">
         <activity
-            android:name=".AutorizationActivity"
+            android:name=".AuthorizationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -35,7 +35,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/MainTheme">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

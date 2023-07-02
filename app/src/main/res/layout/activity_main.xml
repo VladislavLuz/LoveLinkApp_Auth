@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     android:background="@drawable/start_activity_gradient"
+    android:padding="0dp"
     tools:context=".MainActivity">
 
     <ImageView
@@ -22,37 +22,40 @@
 
     <Button
         android:id="@+id/buttonAutorization"
+        style="@style/Widget.MaterialComponents.TimePicker.Button"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="#00FFFFFF"
-        android:foreground="@drawable/start_activity_buttons_border"
-        android:text="@string/autorization"
-        app:cornerRadius="20dp"
+        android:text="@string/autorization_button"
+        android:textAllCaps="false"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/start_activity_buttons_border"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAutorization"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageLogo">
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="2dp"
+        tools:ignore="TextContrastCheck" />
 
-        <Button
-            android:id="@+id/buttonCreateAccount"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#00FFFFFF"
-            android:text="@string/create_account"
-            android:textColor="#000000" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/buttonCreateAccount"
+        style="@style/Widget.MaterialComponents.TimePicker.Button"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/create_account"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAutorization"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAutorization"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonAutorization"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.LoveLink" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:windowTranslucentStatus">true</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -13,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">#494949</item>
+        <item name="android:statusBarColor">#DD0F0F</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -23,4 +20,18 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
+
+    <style name="MainTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+    <style name="AppToolbar" parent="Widget.AppCompat.Toolbar">
+        <!-- Устанавливаем отступы в 0dp -->
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+    </style>
+
 </resources>

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">LoveLink</string>
     <string name="create_account">Создать аккаунт</string>
-    <string name="autorization">Войти</string>
+    <string name="autorization_button">Войти</string>
+    <string name="registration">Регистрация</string>
     <string name="enter_phone_number">Введите свой номер телефона</string>
+
 </resources>
