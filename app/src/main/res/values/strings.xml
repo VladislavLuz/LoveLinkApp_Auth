@@ -3,6 +3,9 @@
     <string name="create_account">Создать аккаунт</string>
     <string name="autorization_button">Войти</string>
     <string name="registration">Регистрация</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="enter_phone_number">Введите свой номер телефона</string>
+    <string name="next">Далее</string>
+    <string name="sms_warning">Вы получите на свой телефон сообщение с кодом, чтобы его подтвердить. За отправку сообщения может взиматься дополнительная плата.</string>
 
 </resources>

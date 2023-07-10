@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#DD0F0F</item>
         <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -28,10 +29,5 @@
         <item name="colorPrimary">@color/white</item>
     </style>
 
-    <style name="AppToolbar" parent="Widget.AppCompat.Toolbar">
-        <!-- Устанавливаем отступы в 0dp -->
-        <item name="contentInsetStart">0dp</item>
-        <item name="contentInsetEnd">0dp</item>
-    </style>
 
 </resources>

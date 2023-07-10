@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AuthorizationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/fragAuth_tv_enterPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/enter_phone_number"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/fragAuth_tv_enterPhone"
+        app:layout_constraintStart_toStartOf="@+id/fragAuth_tv_enterPhone"
+        app:layout_constraintTop_toBottomOf="@+id/fragAuth_tv_enterPhone">
+
+        <TextView
+            android:id="@+id/fragmentAuthTVCode"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/fragment_auth_phone_line"
+            android:gravity="center"
+            android:text="RU +7" />
+
+        <EditText
+            android:id="@+id/fragmentAuthEtPhone"
+            style="@android:style/Widget.Material.Light.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autoLink="phone"
+            android:autofillHints=""
+            android:backgroundTint="@color/fragment_auth_phone_line"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:minHeight="48dp"
+            android:numeric="integer"
+            android:phoneNumber="true"
+            android:textColorHighlight="@color/highlight_text"
+            android:textColorLink="@color/black"
+            android:textCursorDrawable="@color/fragment_auth_phone_line" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fragmentAuthTVSMSWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/sms_warning"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/fragmentAuthButtonNext"
+        style="@style/Widget.MaterialComponents.TimePicker.Button"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/fragment_auth_buttton_next"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="@color/fragment_auth_phone_line"
+        app:strokeColor="@color/fragment_auth_buttton_next" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

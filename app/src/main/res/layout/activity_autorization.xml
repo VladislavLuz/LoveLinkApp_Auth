@@ -7,18 +7,53 @@
     tools:context=".AuthorizationActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/AppToolbar"
+        android:id="@+id/toolbarAuth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/teal_700"
         android:minHeight="?attr/actionBarSize"
-        android:paddingLeft="70dp"
-        android:paddingRight="70dp"
         android:theme="?attr/actionBarTheme"
-        app:collapseIcon="@drawable/ic_back_toolbar"
-        app:contentInsetStartWithNavigation="0dp"
+        app:contentInsetStart="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/toolbarAuthTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/registration"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteX="166dp"
+            tools:layout_editor_absoluteY="18dp" />
+
+        <ImageButton
+            android:id="@+id/toolbarAuthButtonBack"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/material_on_primary_disabled"
+            android:contentDescription="@string/app_name"
+            android:minHeight="48dp"
+            app:srcCompat="@drawable/ic_back_toolbar"
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="14dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_auth_first"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarAuth"
+        app:layout_constraintVertical_bias="0.782">
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

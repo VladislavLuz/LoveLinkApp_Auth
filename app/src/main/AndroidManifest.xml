@@ -13,6 +13,13 @@
         android:theme="@style/Theme.LoveLink"
         tools:targetApi="33">
         <activity
+            android:name=".TestActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".AuthorizationActivity"
             android:exported="false">
             <meta-data
