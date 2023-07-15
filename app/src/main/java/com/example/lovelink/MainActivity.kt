@@ -3,6 +3,7 @@ package com.example.lovelink
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lovelink.authorization.AuthorizationActivity
 import com.example.lovelink.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun buttonAuthorizedListener(){
         binding.buttonAutorization.setOnClickListener(){
-            val openAuth = Intent(this,AuthorizationActivity::class.java)
+            val openAuth = Intent(this, AuthorizationActivity::class.java)
             startActivity(openAuth)
         }
     }
