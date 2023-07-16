@@ -43,25 +43,33 @@ class AuthorizationFragment : Fragment() {
             binding.fragmentAuthButtonNext.text = "Hwll"
 
             val authRetrofitPhone = Retrofit.Builder()
-                .baseUrl("http://92.51.39.4").addConverterFactory(GsonConverterFactory.create()).build()
+                .baseUrl("http://92.51.39.4")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
             var authAPI = authRetrofitPhone.create(AuthorizationAPI::class.java)
+
             Log.d("MyLog","AuthAPIsuccess")
 
             CoroutineScope(Dispatchers.IO).launch {
-                var tempPhone= "+7" + binding.fragmentAuthEtPhone.text.toString()
+                var tempPhone= "+7" + binding.fragmentAuthEtPhone.text.trim().toString()
+
                 Log.d("MyLog","Corutine")
+
                 val reqPhone = authAPI.authSendPhone(
                     AuthPhoneRequest(tempPhone)
                 )
+
                 Log.d("MyLog","Corutine2")
+
                 requireActivity().runOnUiThread {
                     binding.fragmentAuthButtonNext.text = tempPhone
                     if(reqPhone.isSuccessful){
                         binding.fragmentAuthTVSMSWarning.text = "Okey!!"
-                        binding.fragAuthTvEnterPhone.text = reqPhone.body().toString()
+                        binding.fragAuthTvEnterPhone.text = reqPhone.body()?.status.toString()
                     }else{
                         binding.fragmentAuthTVSMSWarning.text = reqPhone.code().toString()
-                    binding.fragAuthTvEnterPhone.text = reqPhone.errorBody().toString()
+                        binding.fragAuthTvEnterPhone.text = reqPhone.errorBody().toString()
                     }
                 }
             }

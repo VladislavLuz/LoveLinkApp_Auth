@@ -1,5 +1,5 @@
 package com.example.lovelink.authorization.connection
 
-data class AuthPhoneResponse(
-    var status:String
+data class AuthPhoneRequest(
+    var phone:String
 )
