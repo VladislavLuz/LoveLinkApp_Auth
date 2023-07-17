@@ -15,7 +15,7 @@ class AuthorizationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAutorizationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        onClickAuthBack()
+        onClickAuthButtonBack()
 
         /*val toolbar = findViewById<Toolbar>(R.id.toolbarAuth)
         setSupportActionBar(toolbar)
@@ -30,7 +30,7 @@ class AuthorizationActivity : AppCompatActivity() {
     }
 
 
-    private fun onClickAuthBack(){
+    private fun onClickAuthButtonBack(){
         binding.toolbarAuthButtonBack.setOnClickListener(){
             finish()
         }

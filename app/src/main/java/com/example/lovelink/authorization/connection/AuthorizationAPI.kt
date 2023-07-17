@@ -6,5 +6,5 @@ import retrofit2.http.POST
 
 interface AuthorizationAPI {
 @POST("api/v1/reg/send_code")
-    suspend fun authSendPhone(@Body authPhoneRequest: AuthPhoneRequest):Response<AuthPhoneResponse>
+    suspend fun sendPhone(@Body authPhoneRequest: AuthPhoneRequest):Response<AuthPhoneResponse>
 }

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.lovelink.R
 import com.example.lovelink.authorization.connection.AuthPhoneRequest
 import com.example.lovelink.authorization.connection.AuthorizationAPI
 import com.example.lovelink.databinding.FragmentAuthorizationBinding
@@ -32,44 +33,33 @@ class AuthorizationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sendPhoneRequests()
+        sendPhoneRequest()
     }
 
         fun newInstance(param1: String, param2: String) = AuthorizationFragment()
 
 
-    fun sendPhoneRequests(){
+    fun sendPhoneRequest(){
         binding.fragmentAuthButtonNext.setOnClickListener(){
-            binding.fragmentAuthButtonNext.text = "Hwll"
 
-            val authRetrofitPhone = Retrofit.Builder()
-                .baseUrl("http://92.51.39.4")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            var authAPI = authRetrofitPhone.create(AuthorizationAPI::class.java)
-
-            Log.d("MyLog","AuthAPIsuccess")
+            binding.fragmentAuthButtonNext.text = "..."
 
             CoroutineScope(Dispatchers.IO).launch {
                 var tempPhone= "+7" + binding.fragmentAuthEtPhone.text.trim().toString()
 
-                Log.d("MyLog","Corutine")
-
-                val reqPhone = authAPI.authSendPhone(
+                var authModel = AuthorizationModel()
+                val reqPhone = authModel.sendRequest(getString(R.string.serv_ip)).sendPhone(
                     AuthPhoneRequest(tempPhone)
                 )
 
-                Log.d("MyLog","Corutine2")
-
                 requireActivity().runOnUiThread {
                     binding.fragmentAuthButtonNext.text = tempPhone
-                    if(reqPhone.isSuccessful){
+                    if(reqPhone.isSuccessful && reqPhone.body()?.status.toString() == "true"){
                         binding.fragmentAuthTVSMSWarning.text = "Okey!!"
-                        binding.fragAuthTvEnterPhone.text = reqPhone.body()?.status.toString()
                     }else{
-                        binding.fragmentAuthTVSMSWarning.text = reqPhone.code().toString()
-                        binding.fragAuthTvEnterPhone.text = reqPhone.errorBody().toString()
+                        binding.fragmentAuthTVError.visibility = View.VISIBLE
+                        var textError = getString(R.string.response_error_message) + reqPhone.code().toString() + " code \n" + reqPhone.errorBody().toString()
+                        binding.fragmentAuthTVError.text =  textError
                     }
                 }
             }

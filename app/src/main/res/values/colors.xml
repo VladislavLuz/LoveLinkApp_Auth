@@ -10,4 +10,5 @@
     <color name="fragment_auth_buttton_next">#C3C3C3</color>
     <color name="fragment_auth_phone_line">#707070</color>
     <color name="highlight_text">#CC919191</color>
+    <color name="fragment_auth_error">#FF2C2C</color>
 </resources>
