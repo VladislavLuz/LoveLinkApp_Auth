@@ -20,8 +20,6 @@ class AuthorizationModel {
 
     fun checkPhoneField(textPhoneField:String):Boolean{
 
-
-
         if(textPhoneField.length == 10){
             return true
         }

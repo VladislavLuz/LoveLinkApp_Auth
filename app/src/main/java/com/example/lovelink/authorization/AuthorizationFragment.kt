@@ -7,17 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.example.lovelink.R
 import com.example.lovelink.authorization.connection.AuthPhoneRequest
-import com.example.lovelink.authorization.connection.AuthorizationAPI
 import com.example.lovelink.databinding.FragmentAuthorizationBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.Response
+import java.io.IOException
 
-class AuthorizationFragment : Fragment() {
+class AuthorizationFragment(): Fragment() {
     private lateinit var binding: FragmentAuthorizationBinding
 
 
@@ -40,7 +40,9 @@ class AuthorizationFragment : Fragment() {
 
 
     fun sendPhoneRequest(){
+
         binding.fragmentAuthButtonNext.setOnClickListener(){
+            if (binding.fragmentAuthTVError.isVisible) binding.fragmentAuthTVError.visibility = View.GONE
 
             binding.fragmentAuthButtonNext.text = "..."
 
@@ -48,20 +50,32 @@ class AuthorizationFragment : Fragment() {
                 var tempPhone= "+7" + binding.fragmentAuthEtPhone.text.trim().toString()
 
                 var authModel = AuthorizationModel()
-                val reqPhone = authModel.sendRequest(getString(R.string.serv_ip)).sendPhone(
-                    AuthPhoneRequest(tempPhone)
-                )
+                try {
+                    var reqPhone = authModel.sendRequest(getString(R.string.serv_ip)).sendPhone(
+                        AuthPhoneRequest(tempPhone)
+                    )
+                    requireActivity().runOnUiThread {
 
-                requireActivity().runOnUiThread {
-                    binding.fragmentAuthButtonNext.text = tempPhone
-                    if(reqPhone.isSuccessful && reqPhone.body()?.status.toString() == "true"){
-                        binding.fragmentAuthTVSMSWarning.text = "Okey!!"
-                    }else{
+                            binding.fragmentAuthButtonNext.text = tempPhone
+                            if (reqPhone.isSuccessful && reqPhone.body()?.status.toString() == "true") {
+                                binding.fragmentAuthTVSMSWarning.text = "Okey!!"
+                            } else {
+                                binding.fragmentAuthTVError.visibility = View.VISIBLE
+                                var textError =
+                                    getString(R.string.response_error_message) + reqPhone.code()
+                                        .toString() + " code \n" + reqPhone.errorBody().toString()
+                                binding.fragmentAuthTVError.text = textError
+                            }
+
+                    }
+                }catch (i:IOException){
+                    Log.d("MyLog",i.toString())
+                    requireActivity().runOnUiThread {
                         binding.fragmentAuthTVError.visibility = View.VISIBLE
-                        var textError = getString(R.string.response_error_message) + reqPhone.code().toString() + " code \n" + reqPhone.errorBody().toString()
-                        binding.fragmentAuthTVError.text =  textError
+                        binding.fragmentAuthTVError.text = i.toString()
                     }
                 }
+
             }
         }
     }

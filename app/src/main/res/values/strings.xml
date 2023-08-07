@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">LoveLink</string>
-    <string name="serv_ip">http://92.51.39.4</string>
+    <string name="serv_ip">http://92.51.39.4:8000</string>
     <string name="create_account">Создать аккаунт</string>
     <string name="autorization_button">Войти</string>
     <string name="registration">Регистрация</string>
+    <string name="authorization">Войти в аккаунт</string>
     <!-- AuthFragment1 -->
     <string name="enter_phone_number">Введите свой номер телефона</string>
     <string name="next">Далее</string>

@@ -4,9 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.lovelink.R
 import com.example.lovelink.databinding.ActivityAutorizationBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class AuthorizationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAutorizationBinding
@@ -31,7 +28,7 @@ class AuthorizationActivity : AppCompatActivity() {
 
 
     private fun onClickAuthButtonBack(){
-        binding.toolbarAuthButtonBack.setOnClickListener(){
+        binding.toolbarAuthButtonBack.setOnClickListener{
             finish()
         }
     }
