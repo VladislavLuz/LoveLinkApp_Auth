@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
+import com.example.lovelink.MainActivity
 import com.example.lovelink.R
 import com.example.lovelink.authorization.connection.AuthPhoneRequest
 import com.example.lovelink.databinding.FragmentAuthorizationBinding
@@ -77,6 +79,9 @@ class AuthorizationFragment(): Fragment() {
                 }
 
             }
+
+            var authActivityController = findNavController()
+            authActivityController.navigate(R.id.authorizationVerifyFragment)
         }
     }
 

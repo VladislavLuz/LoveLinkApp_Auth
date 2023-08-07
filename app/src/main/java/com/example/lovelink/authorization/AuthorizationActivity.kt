@@ -2,6 +2,8 @@ package com.example.lovelink.authorization
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.lovelink.R
 import com.example.lovelink.databinding.ActivityAutorizationBinding
 
@@ -22,8 +24,8 @@ class AuthorizationActivity : AppCompatActivity() {
            // setHomeAsUpIndicator(R.drawable.ic_back_toolbar)
         }*/
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_auth_first,
-            AuthorizationFragment()).commit()
+        /*supportFragmentManager.beginTransaction().replace(R.id.fragment_auth_first,
+            AuthorizationFragment()).commit()*/
     }
 
 
