@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">LoveLink</string>
     <string name="serv_ip">http://92.51.39.4:8000</string>
+    <string name="serv_apiKey">76067a4a-38d2-40dd-b012-99a147e27a11</string>
     <string name="create_account">Создать аккаунт</string>
     <string name="autorization_button">Войти</string>
     <string name="registration">Регистрация</string>
@@ -11,5 +12,6 @@
     <string name="sms_warning">Вы получите на свой телефон сообщение с кодом, чтобы его подтвердить. За отправку сообщения может взиматься дополнительная плата.</string>
     <string name="response_error_message">Произошла ошибка!Проверьте введенные данные.\nИнформация:</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_code_number">Введите полученный код</string>
+    <string name="mytoken">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIrNzkzMTM1NjcyMDkifQ.dIsomuLTBBWCYTpLbF61y_9bMev1_NVal03BU_uIk8c</string>
 </resources>

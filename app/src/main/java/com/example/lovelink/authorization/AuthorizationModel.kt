@@ -8,6 +8,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class AuthorizationModel {
+    var phoneNumber:String = "+79313567209"
+
+
     fun sendRequest(server_ip: String):AuthorizationAPI{
         val authRetrofitPhone = Retrofit.Builder()
             .baseUrl(server_ip)
@@ -18,13 +21,7 @@ class AuthorizationModel {
     }
 
 
-    fun checkPhoneField(textPhoneField:String):Boolean{
 
-        if(textPhoneField.length == 10){
-            return true
-        }
-        return false
-    }
 
 
 }

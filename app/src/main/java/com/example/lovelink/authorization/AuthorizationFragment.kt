@@ -49,23 +49,26 @@ class AuthorizationFragment(): Fragment() {
             binding.fragmentAuthButtonNext.text = "..."
 
             CoroutineScope(Dispatchers.IO).launch {
-                var tempPhone= "+7" + binding.fragmentAuthEtPhone.text.trim().toString()
+                var tempNumber= "+7" + binding.fragmentAuthEtPhone.text.trim().toString()
 
                 var authModel = AuthorizationModel()
+                authModel.phoneNumber = tempNumber
                 try {
                     var reqPhone = authModel.sendRequest(getString(R.string.serv_ip)).sendPhone(
-                        AuthPhoneRequest(tempPhone)
+                        AuthPhoneRequest(tempNumber)
                     )
                     requireActivity().runOnUiThread {
 
-                            binding.fragmentAuthButtonNext.text = tempPhone
+                            binding.fragmentAuthButtonNext.text = tempNumber
+
                             if (reqPhone.isSuccessful && reqPhone.body()?.status.toString() == "true") {
+
                                 binding.fragmentAuthTVSMSWarning.text = "Okey!!"
+
+                                findNavController().navigate(R.id.authorizationVerifyFragment)
                             } else {
                                 binding.fragmentAuthTVError.visibility = View.VISIBLE
-                                var textError =
-                                    getString(R.string.response_error_message) + reqPhone.code()
-                                        .toString() + " code \n" + reqPhone.errorBody().toString()
+                                var textError = getString(R.string.response_error_message) + reqPhone.code().toString() + " code \n" + reqPhone.errorBody().toString()
                                 binding.fragmentAuthTVError.text = textError
                             }
 
@@ -79,9 +82,6 @@ class AuthorizationFragment(): Fragment() {
                 }
 
             }
-
-            var authActivityController = findNavController()
-            authActivityController.navigate(R.id.authorizationVerifyFragment)
         }
     }
 
