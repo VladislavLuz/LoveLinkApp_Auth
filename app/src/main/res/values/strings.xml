@@ -13,5 +13,5 @@
     <string name="response_error_message">Произошла ошибка!Проверьте введенные данные.\nИнформация:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="enter_code_number">Введите полученный код</string>
-    <string name="mytoken">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIrNzkzMTM1NjcyMDkifQ.dIsomuLTBBWCYTpLbF61y_9bMev1_NVal03BU_uIk8c</string>
+    <string name="send_code_number_again">Отправить код повторно</string>
 </resources>

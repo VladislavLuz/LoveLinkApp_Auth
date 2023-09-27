@@ -8,7 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="fragment_auth_buttton_next">#C3C3C3</color>
-    <color name="fragment_auth_phone_line">#707070</color>
+    <color name="active_buttonNext_color">#C3C3C3</color>
+    <color name="click_buttonNext_color">#C3C3C3</color>
+    <color name="error_buttonNext_color">#FF8888</color>
+    <color name="cursor_color">#707070</color>
     <color name="highlight_text">#CC919191</color>
-    <color name="error_color">#FF2C2C</color>
+    <color name="error">#FF2C2C</color>
+    <color name="smsWarning">#7A7A7A</color>
+    <color name="send_code_again">#3890D0</color>
 </resources>

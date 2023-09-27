@@ -31,7 +31,9 @@ class AuthorizationActivity : AppCompatActivity() {
 
     private fun onClickAuthButtonBack(){
         binding.toolbarAuthButtonBack.setOnClickListener{
+            binding.toolbarAuthButtonBack.isEnabled = false
             finish()
+            binding.toolbarAuthButtonBack.isEnabled = true
         }
     }
 

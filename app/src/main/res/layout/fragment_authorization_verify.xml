@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="@color/fragment_auth_phone_line"
+        app:rippleColor="@color/cursor_color"
         app:strokeColor="@color/fragment_auth_buttton_next" />
 
     <TextView
@@ -58,6 +58,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -67,54 +68,74 @@
         <EditText
             android:id="@+id/authVerify_et1"
             android:layout_width="60dp"
-            android:layout_height="68dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:inputType="numberSigned"
             android:maxLength="1"
+            android:textCursorDrawable="@color/cursor_color"
+            android:textSize="48sp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/authVerify_et2"
             android:layout_width="59dp"
-            android:layout_height="68dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:inputType="numberSigned"
             android:maxLength="1"
+            android:textCursorDrawable="@color/cursor_color"
+            android:textSize="48sp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/authVerify_et3"
             android:layout_width="59dp"
-            android:layout_height="68dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:inputType="numberSigned"
             android:maxLength="1"
+            android:textCursorDrawable="@color/cursor_color"
+            android:textSize="48sp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/authVerify_et4"
             android:layout_width="59dp"
-            android:layout_height="68dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:inputType="numberSigned"
             android:maxLength="1"
+            android:textColorHighlight="@color/highlight_text"
+            android:textColorLink="@color/black"
+            android:textCursorDrawable="@color/cursor_color"
+            android:textSize="48sp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/authVerify_et5"
             android:layout_width="59dp"
-            android:layout_height="68dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:inputType="numberSigned"
             android:maxLength="1"
+            android:textCursorDrawable="@color/cursor_color"
+            android:textSize="48sp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/authVerify_et6"
             android:layout_width="59dp"
-            android:layout_height="68dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:inputType="numberSigned"
             android:maxLength="1"
+            android:textCursorDrawable="@color/cursor_color"
+            android:textSize="48sp"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
@@ -123,13 +144,24 @@
         android:id="@+id/authVerify_et_error"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:gravity="start"
         android:text="@string/response_error_message"
-        android:textColor="@color/error_color"
+        android:textColor="@color/error"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authVerifyButtonSendAgain" />
+
+    <TextView
+        android:id="@+id/authVerifyButtonSendAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/send_code_number_again"
+        android:textColor="@color/send_code_again"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 

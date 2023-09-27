@@ -44,6 +44,7 @@ class AuthorizationFragment(): Fragment() {
     fun sendPhoneRequest(){
 
         binding.fragmentAuthButtonNext.setOnClickListener(){
+            binding.fragmentAuthButtonNext.isEnabled = false
             if (binding.fragmentAuthTVError.isVisible) binding.fragmentAuthTVError.visibility = View.GONE
 
             binding.fragmentAuthButtonNext.text = "..."
@@ -70,18 +71,22 @@ class AuthorizationFragment(): Fragment() {
                                 binding.fragmentAuthTVError.visibility = View.VISIBLE
                                 var textError = getString(R.string.response_error_message) + reqPhone.code().toString() + " code \n" + reqPhone.errorBody().toString()
                                 binding.fragmentAuthTVError.text = textError
+                                binding.fragmentAuthButtonNext.setBackgroundColor(resources.getColor(R.color.error_buttonNext_color))
+                                binding.fragmentAuthButtonNext.text = getString(R.string.next)
                             }
-
                     }
                 }catch (i:IOException){
                     Log.d("MyLog",i.toString())
                     requireActivity().runOnUiThread {
                         binding.fragmentAuthTVError.visibility = View.VISIBLE
                         binding.fragmentAuthTVError.text = i.toString()
+                        binding.fragmentAuthButtonNext.setBackgroundColor(resources.getColor(R.color.error_buttonNext_color))
+                        binding.fragmentAuthButtonNext.text = getString(R.string.next)
                     }
                 }
 
             }
+            binding.fragmentAuthButtonNext.isEnabled = true
         }
     }
 
