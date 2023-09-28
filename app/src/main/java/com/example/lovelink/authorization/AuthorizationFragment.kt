@@ -1,12 +1,16 @@
 package com.example.lovelink.authorization
 
 
+import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.lovelink.MainActivity
@@ -33,6 +37,7 @@ class AuthorizationFragment(): Fragment() {
 
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sendPhoneRequest()
@@ -41,18 +46,40 @@ class AuthorizationFragment(): Fragment() {
         fun newInstance(param1: String, param2: String) = AuthorizationFragment()
 
 
-    fun sendPhoneRequest(){
 
-        binding.fragmentAuthButtonNext.setOnClickListener(){
+    fun sendPhoneRequest() {
+
+        binding.fragmentAuthButtonNext.setOnClickListener() {
             binding.fragmentAuthButtonNext.isEnabled = false
             if (binding.fragmentAuthTVError.isVisible) binding.fragmentAuthTVError.visibility = View.GONE
+            var authModel = AuthorizationModel()
+            binding.fragmentAuthEtPhone.addTextChangedListener(object :TextWatcher{
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    if(authModel.checkFieldCharacters(binding.fragmentAuthEtPhone.text.trim().toString(), 10)){
+                        binding.fragmentAuthTVError.visibility = View.GONE
+                        binding.fragmentAuthButtonNext.setBackgroundColor(resources.getColor(R.color.fragment_auth_buttton_next))
+                        binding.fragmentAuthButtonNext.isEnabled = true
+                    }else{
+                        if (binding.fragmentAuthTVError.visibility != View.VISIBLE){
+                            binding.fragmentAuthTVError.visibility = View.VISIBLE
+                            binding.fragmentAuthButtonNext.setBackgroundColor(resources.getColor(R.color.error_buttonNext_color))
+                            binding.fragmentAuthButtonNext.isEnabled = false
+                        }
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                }
+            })
+
+            if (authModel.checkFieldCharacters(binding.fragmentAuthEtPhone.text.trim().toString(), 10)) {
 
             binding.fragmentAuthButtonNext.text = "..."
-
-            CoroutineScope(Dispatchers.IO).launch {
                 var tempNumber= "+7" + binding.fragmentAuthEtPhone.text.trim().toString()
-
-                var authModel = AuthorizationModel()
+            CoroutineScope(Dispatchers.IO).launch {
                 authModel.phoneNumber = tempNumber
                 try {
                     var reqPhone = authModel.sendRequest(getString(R.string.serv_ip)).sendPhone(
@@ -60,12 +87,7 @@ class AuthorizationFragment(): Fragment() {
                     )
                     requireActivity().runOnUiThread {
 
-                            binding.fragmentAuthButtonNext.text = tempNumber
-
                             if (reqPhone.isSuccessful && reqPhone.body()?.status.toString() == "true") {
-
-                                binding.fragmentAuthTVSMSWarning.text = "Okey!!"
-
                                 findNavController().navigate(R.id.authorizationVerifyFragment)
                             } else {
                                 binding.fragmentAuthTVError.visibility = View.VISIBLE
@@ -74,6 +96,7 @@ class AuthorizationFragment(): Fragment() {
                                 binding.fragmentAuthButtonNext.setBackgroundColor(resources.getColor(R.color.error_buttonNext_color))
                                 binding.fragmentAuthButtonNext.text = getString(R.string.next)
                             }
+
                     }
                 }catch (i:IOException){
                     Log.d("MyLog",i.toString())
@@ -87,8 +110,20 @@ class AuthorizationFragment(): Fragment() {
 
             }
             binding.fragmentAuthButtonNext.isEnabled = true
+            } else {
+                if (binding.fragmentAuthTVError.visibility !=View.VISIBLE) {
+                binding.fragmentAuthTVError.visibility = View.VISIBLE
+                binding.fragmentAuthButtonNext.setBackgroundColor(resources.getColor(R.color.error_buttonNext_color))
+                binding.fragmentAuthButtonNext.text = getString(R.string.next)
+                }
+                binding.fragmentAuthButtonNext.isEnabled = true
+            }
         }
     }
+
+
+
+
 
 
     }

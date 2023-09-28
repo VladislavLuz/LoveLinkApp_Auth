@@ -13,6 +13,7 @@
         <item name="android:statusBarColor">#DD0F0F</item>
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
+        <item name="android:autofilledHighlight">@android:color/transparent</item>
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">

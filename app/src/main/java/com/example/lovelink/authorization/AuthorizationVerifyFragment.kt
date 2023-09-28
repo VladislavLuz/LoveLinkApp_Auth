@@ -55,8 +55,8 @@ class AuthorizationVerifyFragment : Fragment() {
     }
 
     fun sendCodeRequest(){
-        binding.authVerifyButton.isEnabled = false
-        binding.authVerifyButtonSendAgain.isEnabled = false
+            binding.authVerifyButton.isEnabled = false
+            binding.authVerifyButtonSendAgain.isEnabled = false
             if (binding.authVerifyEtError.isVisible){
                 binding.authVerifyEtError.visibility = View.GONE
                 binding.apply {

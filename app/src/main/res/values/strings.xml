@@ -10,7 +10,7 @@
     <string name="enter_phone_number">Введите свой номер телефона</string>
     <string name="next">Далее</string>
     <string name="sms_warning">Вы получите на свой телефон сообщение с кодом, чтобы его подтвердить. За отправку сообщения может взиматься дополнительная плата.</string>
-    <string name="response_error_message">Произошла ошибка!Проверьте введенные данные.\nИнформация:</string>
+    <string name="response_error_message">Произошла ошибка! Проверьте введенные данные\n</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="enter_code_number">Введите полученный код</string>
     <string name="send_code_number_again">Отправить код повторно</string>

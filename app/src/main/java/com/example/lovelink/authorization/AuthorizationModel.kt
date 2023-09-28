@@ -20,6 +20,10 @@ class AuthorizationModel {
         return authAPI
     }
 
+    fun checkFieldCharacters(field: String, numberOfCharacters:Int):Boolean{
+        return field.chars().allMatch {Character.isDigit(it)}&&field.length==numberOfCharacters
+    }
+
 
 
 
