@@ -1,15 +1,15 @@
 package com.example.lovelink.authorization
 
 import android.content.Context
+import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import com.example.lovelink.R
 import com.example.lovelink.authorization.connection.AuthorizationAPI
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class AuthorizationModel {
-    var phoneNumber:String = "+79313567209"
-
 
     fun sendRequest(server_ip: String):AuthorizationAPI{
         val authRetrofitPhone = Retrofit.Builder()

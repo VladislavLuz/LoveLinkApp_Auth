@@ -49,7 +49,7 @@
             android:autoLink="phone"
             android:autofillHints=""
             android:backgroundTint="@color/cursor_color"
-            android:inputType="phone"
+            android:inputType="numberSigned|phone"
             android:maxLength="10"
             android:minHeight="48dp"
             android:numeric="integer"
