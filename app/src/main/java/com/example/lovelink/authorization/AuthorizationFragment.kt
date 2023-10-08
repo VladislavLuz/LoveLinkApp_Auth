@@ -49,11 +49,12 @@ class AuthorizationFragment() : Fragment() {
 
 
     fun sendPhoneRequest() {
-
         binding.fragmentAuthButtonNext.setOnClickListener() {
+
             binding.fragmentAuthButtonNext.isEnabled = false
-            if (binding.fragmentAuthTVError.isVisible) binding.fragmentAuthTVError.visibility =
-                View.GONE
+            if (binding.fragmentAuthTVError.isVisible) {
+                binding.fragmentAuthTVError.visibility = View.GONE
+            }
             var authModel = AuthorizationModel()
             binding.fragmentAuthEtPhone.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
@@ -75,9 +76,10 @@ class AuthorizationFragment() : Fragment() {
                     } else {
                         if (binding.fragmentAuthTVError.visibility != View.VISIBLE) {
                             binding.fragmentAuthTVError.visibility = View.VISIBLE
-                            binding.fragmentAuthButtonNext.setBackgroundColor(resources.getColor(R.color.error_buttonNext_color))
-                            binding.fragmentAuthButtonNext.isEnabled = false
                         }
+                        binding.fragmentAuthTVError.text = getString(R.string.response_error_message)
+                        binding.fragmentAuthButtonNext.setBackgroundColor(resources.getColor(R.color.error_buttonNext_color))
+                        binding.fragmentAuthButtonNext.isEnabled = false
                     }
                 }
 

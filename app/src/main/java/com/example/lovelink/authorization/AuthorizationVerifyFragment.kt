@@ -139,9 +139,10 @@ class AuthorizationVerifyFragment : Fragment() {
         }else {
             if (binding.authVerifyEtError.visibility != View.VISIBLE) {
                 binding.authVerifyEtError.visibility = View.VISIBLE
-                binding.authVerifyButton.setBackgroundColor(resources.getColor(R.color.error_buttonNext_color))
-                binding.authVerifyButton.text = getString(R.string.autorization_button)
             }
+            binding.authVerifyButton.setBackgroundColor(resources.getColor(R.color.error_buttonNext_color))
+            binding.authVerifyButton.text = getString(R.string.autorization_button)
+            binding.authVerifyEtError.text = getString(R.string.response_error_message)
         }
         binding.authVerifyButton.isEnabled = true
         binding.authVerifyButtonSendAgain.isEnabled = true
