@@ -15,4 +15,5 @@
     <string name="enter_code_number">Введите полученный код</string>
     <string name="send_code_number_again">Отправить код повторно</string>
     <string name="send_code_number_again_success">Получить код повторно через:</string>
+    <string name="second_abbreviated">сек.</string>
 </resources>

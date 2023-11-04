@@ -22,6 +22,7 @@ import com.example.lovelink.databinding.FragmentAuthorizationBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import retrofit2.Response
 import java.io.IOException
 
@@ -112,7 +113,7 @@ class AuthorizationFragment() : Fragment() {
                                 binding.fragmentAuthTVError.visibility = View.VISIBLE
                                 var textError = getString(R.string.response_error_message) +
                                         reqPhone.code().toString() + " code \n" +
-                                        reqPhone.errorBody().toString()
+                                        reqPhone.errorBody()?.string()?.let { JSONObject(it).getString("detail") }
                                 binding.fragmentAuthTVError.text = textError
                                 binding.fragmentAuthButtonNext.setBackgroundColor(
                                     resources.getColor(

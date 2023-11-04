@@ -1,6 +1,7 @@
 package com.example.lovelink.authorization
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -20,7 +21,10 @@ import com.example.lovelink.databinding.FragmentAuthorizationVerifyBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import java.io.IOException
+import java.sql.Time
+import kotlin.time.DurationUnit
 
 class AuthorizationVerifyFragment : Fragment() {
     private lateinit var binding: FragmentAuthorizationVerifyBinding
@@ -71,7 +75,6 @@ class AuthorizationVerifyFragment : Fragment() {
 
     fun sendCodeRequest() {
         binding.authVerifyButton.isEnabled = false
-        binding.authVerifyButtonSendAgain.isEnabled = false
         if (binding.authVerifyEtError.isVisible) {
             binding.authVerifyEtError.visibility = View.GONE
             binding.apply {
@@ -110,7 +113,8 @@ class AuthorizationVerifyFragment : Fragment() {
                             binding.authVerifyEtError.visibility = View.VISIBLE
                             var textError = getString(R.string.response_error_message) +
                                     reqCode.code().toString() + " code \n" +
-                                    reqCode.errorBody().toString()
+                                    reqCode.errorBody()?.string()
+                                        ?.let { JSONObject(it).getString("detail") }
                             binding.authVerifyEtError.text = textError
                             binding.apply {
                                 authVerifyEt1.setTextColor(resources.getColor(R.color.error))
@@ -145,7 +149,6 @@ class AuthorizationVerifyFragment : Fragment() {
             binding.authVerifyEtError.text = getString(R.string.response_error_message)
         }
         binding.authVerifyButton.isEnabled = true
-        binding.authVerifyButtonSendAgain.isEnabled = true
     }
 
     fun resendPhoneRequest() {
@@ -158,13 +161,14 @@ class AuthorizationVerifyFragment : Fragment() {
                 requireActivity().runOnUiThread {
 
                     if (reqPhone.isSuccessful && reqPhone.body()?.status.toString() == "true") {
-                        binding.authVerifyButtonSendAgain.text = getString(R.string.send_code_number_again_success)
                         binding.authVerifyButtonSendAgain.setTextColor(resources.getColor(R.color.black))
+                        startSmsResponseDelayTimer(60000)
                     } else {
                         binding.authVerifyEtError.visibility = View.VISIBLE
                         var textError = getString(R.string.response_error_message) +
                                 reqPhone.code().toString() + " code \n" +
-                                reqPhone.errorBody().toString()
+                                reqPhone.errorBody()?.string()
+                                    ?.let { JSONObject(it).getString("detail") }
                         binding.authVerifyEtError.text = textError
                         binding.authVerifyButton.setBackgroundColor(
                             resources.getColor(
@@ -185,6 +189,21 @@ class AuthorizationVerifyFragment : Fragment() {
             }
 
         }
+    }
+
+    fun startSmsResponseDelayTimer(necessaryTime:Long){
+        object:CountDownTimer(necessaryTime,1000){
+            override fun onTick(TimeM: Long) {
+                binding.authVerifyButtonSendAgain.text = getString(R.string.send_code_number_again_success) + " " + (TimeM/1000).toString() + getString(R.string.second_abbreviated)
+            }
+
+            override fun onFinish() {
+                binding.authVerifyButtonSendAgain.isEnabled = true
+                binding.authVerifyButtonSendAgain.text = getString(R.string.send_code_number_again)
+                binding.authVerifyButtonSendAgain.setTextColor(resources.getColor(R.color.send_code_again))
+            }
+
+        }.start()
     }
 
 
